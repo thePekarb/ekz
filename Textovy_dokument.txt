@@ -1,0 +1,20 @@
+$login='$_POST['login']'
+$password = '$_POST['pass']';
+$hash = password_hash($password, PASSWORD_BCRYPT);
+$sql = "INSERT INTO users VALUES '$login', '$pass'"
+mysqli_query($conn, $sql);
+
+в проверке пороля
+$sql2= "SELECT * FROM users WHERE login = '$login'"
+$login='$_GET['login']'
+$password = '$_GET['pass']';
+if($_POST['login']= $_GET['login']){
+if(password_verify($password, $hash)){
+header(Location: index2.php);
+echo 'Удачная авторизация';
+}
+    
+else{
+    echo 'Пароль или логин неправильный.';
+}
+}
